@@ -1,0 +1,130 @@
+{
+  "TS-100_housing.pdf": {
+    "callouts": [
+      {
+        "text": "50 ±0,1",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 50.0,
+        "upper": 0.1,
+        "lower": -0.1
+      },
+      {
+        "text": "80",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 80.0,
+        "upper": 0.3,
+        "lower": -0.3,
+        "origin": "general"
+      },
+      {
+        "text": "Ø47 +0,007/-0,018",
+        "status": "parsed",
+        "kind": "diameter",
+        "nominal": 47.0,
+        "upper": 0.007,
+        "lower": -0.018
+      },
+      {
+        "text": "30",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 30.0,
+        "upper": 0.0,
+        "lower": 0.0,
+        "origin": "basic"
+      },
+      {
+        "text": "60 ±0.2",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 60.0,
+        "upper": 0.2,
+        "lower": -0.2
+      },
+      {
+        "text": "Ø20 H7",
+        "status": "parsed",
+        "kind": "diameter",
+        "nominal": 20.0,
+        "upper": 0.021,
+        "lower": 0.0
+      },
+      {
+        "text": "0,005",
+        "status": "ambiguous",
+        "category": "geometric"
+      }
+    ],
+    "title_block": {
+      "drawing_number": "TS-100",
+      "revision": "B",
+      "unit": "mm",
+      "general_tolerance": "ISO 2768-m",
+      "size_principle": "independency"
+    }
+  },
+  "TS-110_spacer.pdf": {
+    "callouts": [
+      {
+        "text": "19,8 ±0,05",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 19.8,
+        "upper": 0.05,
+        "lower": -0.05
+      },
+      {
+        "text": "20,2/20,0",
+        "status": "parsed",
+        "kind": "linear",
+        "nominal": 20.1,
+        "upper": 0.1,
+        "lower": -0.1,
+        "origin": "limits"
+      },
+      {
+        "text": "Ø32 +0,1/0",
+        "status": "parsed",
+        "kind": "diameter",
+        "nominal": 32.0,
+        "upper": 0.1,
+        "lower": 0.0
+      }
+    ],
+    "title_block": {
+      "drawing_number": "TS-110",
+      "revision": "A",
+      "unit": "mm",
+      "general_tolerance": "ISO 2768-m"
+    }
+  },
+  "TS-120_shaft.pdf": {
+    "callouts": [
+      {
+        "text": "Ø20 g6",
+        "status": "parsed",
+        "kind": "diameter",
+        "nominal": 20.0,
+        "upper": -0.007,
+        "lower": -0.02
+      },
+      {
+        "text": "0,005",
+        "status": "ambiguous",
+        "category": "geometric"
+      },
+      {
+        "text": "M8",
+        "status": "unsupported"
+      }
+    ],
+    "title_block": {
+      "drawing_number": "TS-120",
+      "revision": "A",
+      "unit": "mm",
+      "size_principle": "independency"
+    }
+  }
+}

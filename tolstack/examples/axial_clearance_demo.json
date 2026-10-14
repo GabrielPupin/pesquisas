@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.0",
+  "project_id": "DEMO-AX-001",
+  "name": "Shaft bearing arrangement — axial end play",
+  "revision": "A",
+  "author": "tolstack demo",
+  "description": "Housing bore with shoulder, two deep-groove ball bearings and a spacer. Output: axial clearance between the outer bearing face and the housing cover face.",
+  "base_unit": "mm",
+  "standard": "ISO_GPS",
+  "components": [
+    {
+      "id": "HSG",
+      "name": "Housing",
+      "part_number": "TS-100",
+      "drawing": "TS-100",
+      "revision": "B"
+    },
+    {
+      "id": "BRG1",
+      "name": "Bearing 1 (6204)",
+      "part_number": "6204",
+      "drawing": "",
+      "revision": ""
+    },
+    {
+      "id": "SPC",
+      "name": "Spacer",
+      "part_number": "TS-110",
+      "drawing": "TS-110",
+      "revision": "A"
+    },
+    {
+      "id": "BRG2",
+      "name": "Bearing 2 (6204)",
+      "part_number": "6204",
+      "drawing": "",
+      "revision": ""
+    }
+  ],
+  "features": [
+    {
+      "id": "HSG_L",
+      "component": "HSG",
+      "name": "Housing shoulder face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "HSG_R",
+      "component": "HSG",
+      "name": "Housing cover seat face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "B1_L",
+      "component": "BRG1",
+      "name": "Bearing 1 left face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "B1_R",
+      "component": "BRG1",
+      "name": "Bearing 1 right face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "SP_L",
+      "component": "SPC",
+      "name": "Spacer left face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "SP_R",
+      "component": "SPC",
+      "name": "Spacer right face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "B2_L",
+      "component": "BRG2",
+      "name": "Bearing 2 left face",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "B2_R",
+      "component": "BRG2",
+      "name": "Bearing 2 right face",
+      "kind": "plane",
+      "role": "none"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "K1",
+      "feature_a": "HSG_L",
+      "feature_b": "B1_L",
+      "assumption": "Bearing 1 held against the housing shoulder by the wave-spring preload."
+    },
+    {
+      "id": "K2",
+      "feature_a": "B1_R",
+      "feature_b": "SP_L",
+      "assumption": "Preload transmitted through the spacer."
+    },
+    {
+      "id": "K3",
+      "feature_a": "SP_R",
+      "feature_b": "B2_L",
+      "assumption": "Preload transmitted through the spacer."
+    }
+  ],
+  "contributors": [
+    {
+      "id": "H",
+      "name": "Housing shoulder-to-cover seat",
+      "component": "HSG",
+      "kind": "dimension",
+      "from_feature": "HSG_L",
+      "to_feature": "HSG_R",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 50.0,
+        "upper": 0.1,
+        "lower": -0.1,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.1"
+      },
+      "justification": "",
+      "source": {
+        "document": "TS-100",
+        "revision": "B",
+        "raw_text": "",
+        "entered_by": ""
+      },
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "B1",
+      "name": "Bearing 1 width",
+      "component": "BRG1",
+      "kind": "dimension",
+      "from_feature": "B1_L",
+      "to_feature": "B1_R",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 15.0,
+        "upper": 0.0,
+        "lower": -0.12,
+        "unit": "mm",
+        "origin": "unilateral",
+        "designation": "+0/-0.12"
+      },
+      "justification": "",
+      "source": {
+        "document": "ISO 492 normal class, d=20 mm",
+        "revision": "",
+        "raw_text": "",
+        "entered_by": ""
+      },
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "S",
+      "name": "Spacer length",
+      "component": "SPC",
+      "kind": "dimension",
+      "from_feature": "SP_L",
+      "to_feature": "SP_R",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 19.8,
+        "upper": 0.05,
+        "lower": -0.05,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.05"
+      },
+      "distribution": {
+        "kind": "normal",
+        "mu": 0.004,
+        "sigma": 0.012
+      },
+      "justification": "",
+      "source": {
+        "document": "TS-110",
+        "revision": "A",
+        "raw_text": "",
+        "entered_by": ""
+      },
+      "notes": "Distribution from SPC data of the turning cell (Cpk ≈ 1.28).",
+      "tags": []
+    },
+    {
+      "id": "B2",
+      "name": "Bearing 2 width",
+      "component": "BRG2",
+      "kind": "dimension",
+      "from_feature": "B2_L",
+      "to_feature": "B2_R",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 15.0,
+        "upper": 0.0,
+        "lower": -0.12,
+        "unit": "mm",
+        "origin": "unilateral",
+        "designation": "+0/-0.12"
+      },
+      "justification": "",
+      "source": {
+        "document": "ISO 492 normal class, d=20 mm",
+        "revision": "",
+        "raw_text": "",
+        "entered_by": ""
+      },
+      "notes": "",
+      "tags": []
+    }
+  ],
+  "geometric_tolerances": [],
+  "characteristic": {
+    "id": "EP",
+    "name": "Axial end play",
+    "type": "axial_clearance",
+    "start_feature": "B2_R",
+    "end_feature": "HSG_R",
+    "unit": "mm",
+    "lsl": 0.05,
+    "usl": 0.45,
+    "nominal_declared": 0.2,
+    "axis": "+X (left → right)",
+    "configuration": "Bearing stack pushed to the left (towards the shoulder) by the preload spring.",
+    "output_kind": "scalar",
+    "description": ""
+  },
+  "chains": [
+    {
+      "id": "A",
+      "name": "Through bearings and spacer",
+      "contributor_ids": [
+        "B2",
+        "S",
+        "B1",
+        "H"
+      ],
+      "rationale": "From the outer face of bearing 2 back through the preloaded stack to the housing shoulder, then across the housing to the cover seat.",
+      "approval": {
+        "state": "pending",
+        "reviewer": "",
+        "timestamp": "",
+        "comment": "",
+        "status_at_review": "",
+        "diagnostics_snapshot": []
+      }
+    },
+    {
+      "id": "B",
+      "name": "Spacer omitted (incorrect)",
+      "contributor_ids": [
+        "B2",
+        "B1",
+        "H"
+      ],
+      "rationale": "Candidate entered without the spacer.",
+      "approval": {
+        "state": "rejected",
+        "reviewer": "demo reviewer",
+        "timestamp": "2026-10-14T00:00:00+00:00",
+        "comment": "Loop does not close: spacer missing.",
+        "status_at_review": "Invalid",
+        "diagnostics_snapshot": []
+      }
+    }
+  ],
+  "correlations": [
+    {
+      "a": "B1",
+      "b": "B2",
+      "rho": 0.5,
+      "source": "Bearings supplied from the same lot"
+    }
+  ],
+  "statistical_assumption": {
+    "rule": "normal_k_sigma",
+    "k": 3.0
+  },
+  "settings": {
+    "mc_samples": 200000,
+    "seed": 12345,
+    "rss_k": 3.0,
+    "percentiles": [
+      0.135,
+      1.0,
+      5.0,
+      50.0,
+      95.0,
+      99.0,
+      99.865
+    ],
+    "confidence": 0.95
+  },
+  "drawings": [],
+  "history": []
+}

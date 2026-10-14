@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tolstack"
+version = "0.1.0"
+description = "Mechanical tolerance stack-up analyzer (Phase 1: 1D chains, Worst-Case, RSS, Monte Carlo, assisted 2D PDF drawing reading)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pydantic>=2.5",
+    "reportlab>=4.0",
+    "openpyxl>=3.1",
+    "pdfplumber>=0.11",
+    "pypdfium2>=4.0",
+    "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+gui = ["streamlit>=1.35", "plotly>=5.20", "pandas>=2.1"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+tolstack = "tolstack.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0",
+  "project_id": "DEMO-FIT-001",
+  "name": "Bore–shaft fit Ø20 H7/g6 with cylindricity",
+  "revision": "A",
+  "author": "tolstack demo",
+  "description": "Plain bearing seat. Both features carry cylindricity 0.005 mm; no envelope indication, so the independency principle (ISO 8015) applies.",
+  "base_unit": "mm",
+  "standard": "ISO_GPS",
+  "components": [
+    {
+      "id": "HSG",
+      "name": "Housing",
+      "part_number": "",
+      "drawing": "TS-100",
+      "revision": "B"
+    },
+    {
+      "id": "SHF",
+      "name": "Shaft",
+      "part_number": "",
+      "drawing": "TS-120",
+      "revision": "A"
+    }
+  ],
+  "features": [
+    {
+      "id": "BORE",
+      "component": "HSG",
+      "name": "Bore Ø20",
+      "kind": "cylinder",
+      "role": "hole"
+    },
+    {
+      "id": "JOURNAL",
+      "component": "SHF",
+      "name": "Journal Ø20",
+      "kind": "cylinder",
+      "role": "shaft"
+    }
+  ],
+  "contacts": [],
+  "contributors": [
+    {
+      "id": "D_BORE",
+      "name": "Bore diameter",
+      "component": "HSG",
+      "kind": "size",
+      "from_feature": "BORE",
+      "tolerance": {
+        "nominal": 20.0,
+        "upper": 0.021,
+        "lower": 0.0,
+        "unit": "mm",
+        "origin": "iso286",
+        "designation": "H7"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "D_SHAFT",
+      "name": "Journal diameter",
+      "component": "SHF",
+      "kind": "size",
+      "from_feature": "JOURNAL",
+      "tolerance": {
+        "nominal": 20.0,
+        "upper": -0.007,
+        "lower": -0.02,
+        "unit": "mm",
+        "origin": "iso286",
+        "designation": "g6"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "CYL_BORE",
+      "name": "Bore cylindricity effect",
+      "component": "HSG",
+      "kind": "geometric",
+      "geometric_id": "G1",
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "CYL_SHAFT",
+      "name": "Journal cylindricity effect",
+      "component": "SHF",
+      "kind": "geometric",
+      "geometric_id": "G2",
+      "justification": "",
+      "notes": "",
+      "tags": []
+    }
+  ],
+  "geometric_tolerances": [
+    {
+      "id": "G1",
+      "type": "cylindricity",
+      "feature_id": "BORE",
+      "value": 0.005,
+      "unit": "mm",
+      "diameter_zone": false,
+      "datums": [],
+      "standard": "ISO_GPS",
+      "size_principle": "independency",
+      "effect_distribution": {
+        "kind": "uniform",
+        "low": 0.0,
+        "high": 0.005
+      },
+      "notes": "Distribution of the form effect: engineering assumption, uniform over [0, t]."
+    },
+    {
+      "id": "G2",
+      "type": "cylindricity",
+      "feature_id": "JOURNAL",
+      "value": 0.005,
+      "unit": "mm",
+      "diameter_zone": false,
+      "datums": [],
+      "standard": "ISO_GPS",
+      "size_principle": "independency",
+      "effect_distribution": {
+        "kind": "uniform",
+        "low": 0.0,
+        "high": 0.005
+      },
+      "notes": ""
+    }
+  ],
+  "characteristic": {
+    "id": "C",
+    "name": "Diametral running clearance",
+    "type": "diametral_clearance",
+    "start_feature": "BORE",
+    "end_feature": "JOURNAL",
+    "unit": "mm",
+    "lsl": 0.005,
+    "usl": 0.045,
+    "nominal_declared": 0.0,
+    "axis": "+X",
+    "configuration": "Shaft centred in the bore (no load-induced offset modelled).",
+    "output_kind": "scalar",
+    "description": ""
+  },
+  "chains": [
+    {
+      "id": "FIT",
+      "name": "Size + cylindricity",
+      "contributor_ids": [
+        "D_BORE",
+        "D_SHAFT",
+        "CYL_BORE",
+        "CYL_SHAFT"
+      ],
+      "rationale": "Mating clearance = hole mating size − shaft mating size; under independency the form deviation reduces both mating sizes' clearance.",
+      "approval": {
+        "state": "pending",
+        "reviewer": "",
+        "timestamp": "",
+        "comment": "",
+        "status_at_review": "",
+        "diagnostics_snapshot": []
+      }
+    }
+  ],
+  "correlations": [],
+  "statistical_assumption": {
+    "rule": "normal_k_sigma",
+    "k": 3.0
+  },
+  "settings": {
+    "mc_samples": 200000,
+    "seed": 12345,
+    "rss_k": 3.0,
+    "percentiles": [
+      0.135,
+      1.0,
+      5.0,
+      50.0,
+      95.0,
+      99.0,
+      99.865
+    ],
+    "confidence": 0.95
+  },
+  "drawings": [],
+  "history": []
+}

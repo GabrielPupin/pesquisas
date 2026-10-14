@@ -131,7 +131,63 @@ def fit_demo() -> Project:
     return p
 
 
+def tutorial_demo() -> Project:
+    """Exemplo do tutorial (docs/TUTORIAL_PT.md): engrenagem entre duas arruelas dentro de uma caixa.
+
+    Folga axial = largura interna da caixa − arruela 1 − engrenagem − arruela 2 = 30 − 1,8 − 26 − 1,8 = 0,4 mm.
+    O caminho "ERRADO" esquece a arruela 1 para mostrar a detecção de caminho aberto.
+    """
+    p = Project(
+        project_id="TUTORIAL-001", name="Tutorial — folga axial da engrenagem", revision="A",
+        author="tutorial", base_unit="mm", standard="ISO_GPS",
+        description="Engrenagem montada entre duas arruelas dentro de uma caixa. Saída: folga axial entre a "
+                    "arruela 2 e a parede direita da caixa.",
+        statistical_assumption=StatisticalAssumption(rule="normal_k_sigma", k=3.0),
+    )
+    p.components = [Component(id="CX", name="Caixa"), Component(id="ARR1", name="Arruela 1"),
+                    Component(id="ENG", name="Engrenagem"), Component(id="ARR2", name="Arruela 2")]
+    p.features = [
+        Feature(id="CX_E", component="CX", name="Parede esquerda interna"),
+        Feature(id="CX_D", component="CX", name="Parede direita interna"),
+        Feature(id="ARR1_E", component="ARR1", name="Arruela 1 face esquerda"),
+        Feature(id="ARR1_D", component="ARR1", name="Arruela 1 face direita"),
+        Feature(id="ENG_E", component="ENG", name="Engrenagem face esquerda"),
+        Feature(id="ENG_D", component="ENG", name="Engrenagem face direita"),
+        Feature(id="ARR2_E", component="ARR2", name="Arruela 2 face esquerda"),
+        Feature(id="ARR2_D", component="ARR2", name="Arruela 2 face direita"),
+    ]
+    p.contacts = [
+        Contact(id="K1", feature_a="CX_E", feature_b="ARR1_E", assumption="Conjunto empurrado para a esquerda na montagem."),
+        Contact(id="K2", feature_a="ARR1_D", feature_b="ENG_E", assumption="Conjunto empurrado para a esquerda na montagem."),
+        Contact(id="K3", feature_a="ENG_D", feature_b="ARR2_E", assumption="Conjunto empurrado para a esquerda na montagem."),
+    ]
+    p.contributors = [
+        Contributor(id="CX", name="Largura interna da caixa", component="CX", from_feature="CX_E",
+                    to_feature="CX_D", direction=1, tolerance=ToleranceSpec.bilateral(30.0, 0.10, "mm")),
+        Contributor(id="ARR1", name="Espessura arruela 1", component="ARR1", from_feature="ARR1_E",
+                    to_feature="ARR1_D", direction=1, tolerance=ToleranceSpec.bilateral(1.8, 0.03, "mm")),
+        Contributor(id="ENG", name="Largura da engrenagem", component="ENG", from_feature="ENG_E",
+                    to_feature="ENG_D", direction=1, tolerance=ToleranceSpec.bilateral(26.0, 0.05, "mm")),
+        Contributor(id="ARR2", name="Espessura arruela 2", component="ARR2", from_feature="ARR2_E",
+                    to_feature="ARR2_D", direction=1, tolerance=ToleranceSpec.bilateral(1.8, 0.03, "mm")),
+    ]
+    p.characteristic = FunctionalCharacteristic(
+        id="FOLGA", name="Folga axial da engrenagem", type="axial_clearance", start_feature="ARR2_D",
+        end_feature="CX_D", unit="mm", lsl=0.10, usl=0.55, nominal_declared=0.40, axis="+X (esquerda → direita)",
+        configuration="Conjunto encostado na parede esquerda da caixa.")
+    p.chains = [
+        Chain(id="CERTO", name="Caminho completo", contributor_ids=["ARR2", "ENG", "ARR1", "CX"],
+              rationale="Da face direita da arruela 2, volta pela arruela 2, engrenagem e arruela 1 até a parede "
+                        "esquerda da caixa, depois atravessa a caixa até a parede direita."),
+        Chain(id="ERRADO", name="Arruela 1 esquecida", contributor_ids=["ARR2", "ENG", "CX"],
+              rationale="Caminho incompleto para demonstrar a validação."),
+    ]
+    return p
+
+
 if __name__ == "__main__":
     save_project(axial_demo(), HERE / "axial_clearance_demo.json")
     save_project(fit_demo(), HERE / "fit_cylindricity_demo.json")
-    print("written:", HERE / "axial_clearance_demo.json", HERE / "fit_cylindricity_demo.json")
+    save_project(tutorial_demo(), HERE / "exemplo_tutorial.json")
+    print("written:", HERE / "axial_clearance_demo.json", HERE / "fit_cylindricity_demo.json",
+          HERE / "exemplo_tutorial.json")

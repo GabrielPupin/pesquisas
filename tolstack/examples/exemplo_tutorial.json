@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "project_id": "TUTORIAL-001",
+  "name": "Tutorial — folga axial da engrenagem",
+  "revision": "A",
+  "author": "tutorial",
+  "description": "Engrenagem montada entre duas arruelas dentro de uma caixa. Saída: folga axial entre a arruela 2 e a parede direita da caixa.",
+  "base_unit": "mm",
+  "standard": "ISO_GPS",
+  "components": [
+    {
+      "id": "CX",
+      "name": "Caixa",
+      "part_number": "",
+      "drawing": "",
+      "revision": ""
+    },
+    {
+      "id": "ARR1",
+      "name": "Arruela 1",
+      "part_number": "",
+      "drawing": "",
+      "revision": ""
+    },
+    {
+      "id": "ENG",
+      "name": "Engrenagem",
+      "part_number": "",
+      "drawing": "",
+      "revision": ""
+    },
+    {
+      "id": "ARR2",
+      "name": "Arruela 2",
+      "part_number": "",
+      "drawing": "",
+      "revision": ""
+    }
+  ],
+  "features": [
+    {
+      "id": "CX_E",
+      "component": "CX",
+      "name": "Parede esquerda interna",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "CX_D",
+      "component": "CX",
+      "name": "Parede direita interna",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ARR1_E",
+      "component": "ARR1",
+      "name": "Arruela 1 face esquerda",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ARR1_D",
+      "component": "ARR1",
+      "name": "Arruela 1 face direita",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ENG_E",
+      "component": "ENG",
+      "name": "Engrenagem face esquerda",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ENG_D",
+      "component": "ENG",
+      "name": "Engrenagem face direita",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ARR2_E",
+      "component": "ARR2",
+      "name": "Arruela 2 face esquerda",
+      "kind": "plane",
+      "role": "none"
+    },
+    {
+      "id": "ARR2_D",
+      "component": "ARR2",
+      "name": "Arruela 2 face direita",
+      "kind": "plane",
+      "role": "none"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "K1",
+      "feature_a": "CX_E",
+      "feature_b": "ARR1_E",
+      "assumption": "Conjunto empurrado para a esquerda na montagem."
+    },
+    {
+      "id": "K2",
+      "feature_a": "ARR1_D",
+      "feature_b": "ENG_E",
+      "assumption": "Conjunto empurrado para a esquerda na montagem."
+    },
+    {
+      "id": "K3",
+      "feature_a": "ENG_D",
+      "feature_b": "ARR2_E",
+      "assumption": "Conjunto empurrado para a esquerda na montagem."
+    }
+  ],
+  "contributors": [
+    {
+      "id": "CX",
+      "name": "Largura interna da caixa",
+      "component": "CX",
+      "kind": "dimension",
+      "from_feature": "CX_E",
+      "to_feature": "CX_D",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 30.0,
+        "upper": 0.1,
+        "lower": -0.1,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.1"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "ARR1",
+      "name": "Espessura arruela 1",
+      "component": "ARR1",
+      "kind": "dimension",
+      "from_feature": "ARR1_E",
+      "to_feature": "ARR1_D",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 1.8,
+        "upper": 0.03,
+        "lower": -0.03,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.03"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "ENG",
+      "name": "Largura da engrenagem",
+      "component": "ENG",
+      "kind": "dimension",
+      "from_feature": "ENG_E",
+      "to_feature": "ENG_D",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 26.0,
+        "upper": 0.05,
+        "lower": -0.05,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.05"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": "ARR2",
+      "name": "Espessura arruela 2",
+      "component": "ARR2",
+      "kind": "dimension",
+      "from_feature": "ARR2_E",
+      "to_feature": "ARR2_D",
+      "direction": 1,
+      "tolerance": {
+        "nominal": 1.8,
+        "upper": 0.03,
+        "lower": -0.03,
+        "unit": "mm",
+        "origin": "bilateral",
+        "designation": "±0.03"
+      },
+      "justification": "",
+      "notes": "",
+      "tags": []
+    }
+  ],
+  "geometric_tolerances": [],
+  "characteristic": {
+    "id": "FOLGA",
+    "name": "Folga axial da engrenagem",
+    "type": "axial_clearance",
+    "start_feature": "ARR2_D",
+    "end_feature": "CX_D",
+    "unit": "mm",
+    "lsl": 0.1,
+    "usl": 0.55,
+    "nominal_declared": 0.4,
+    "axis": "+X (esquerda → direita)",
+    "configuration": "Conjunto encostado na parede esquerda da caixa.",
+    "output_kind": "scalar",
+    "description": ""
+  },
+  "chains": [
+    {
+      "id": "CERTO",
+      "name": "Caminho completo",
+      "contributor_ids": [
+        "ARR2",
+        "ENG",
+        "ARR1",
+        "CX"
+      ],
+      "rationale": "Da face direita da arruela 2, volta pela arruela 2, engrenagem e arruela 1 até a parede esquerda da caixa, depois atravessa a caixa até a parede direita.",
+      "approval": {
+        "state": "pending",
+        "reviewer": "",
+        "timestamp": "",
+        "comment": "",
+        "status_at_review": "",
+        "diagnostics_snapshot": []
+      }
+    },
+    {
+      "id": "ERRADO",
+      "name": "Arruela 1 esquecida",
+      "contributor_ids": [
+        "ARR2",
+        "ENG",
+        "CX"
+      ],
+      "rationale": "Caminho incompleto para demonstrar a validação.",
+      "approval": {
+        "state": "pending",
+        "reviewer": "",
+        "timestamp": "",
+        "comment": "",
+        "status_at_review": "",
+        "diagnostics_snapshot": []
+      }
+    }
+  ],
+  "correlations": [],
+  "statistical_assumption": {
+    "rule": "normal_k_sigma",
+    "k": 3.0
+  },
+  "settings": {
+    "mc_samples": 200000,
+    "seed": 12345,
+    "rss_k": 3.0,
+    "percentiles": [
+      0.135,
+      1.0,
+      5.0,
+      50.0,
+      95.0,
+      99.0,
+      99.865
+    ],
+    "confidence": 0.95
+  },
+  "drawings": [],
+  "history": []
+}

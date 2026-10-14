@@ -33,7 +33,8 @@ from tolstack.reporting.tabular import export_csv, export_excel
 from tolstack.validation.chain_checks import diagnose
 
 ROOT = Path(__file__).resolve().parents[1]
-DEMOS = {"Axial end play (bearings + spacer)": ROOT / "examples" / "axial_clearance_demo.json",
+DEMOS = {"Tutorial — engrenagem + arruelas (docs/TUTORIAL_PT.md)": ROOT / "examples" / "exemplo_tutorial.json",
+         "Axial end play (bearings + spacer)": ROOT / "examples" / "axial_clearance_demo.json",
          "Ø20 H7/g6 fit with cylindricity": ROOT / "examples" / "fit_cylindricity_demo.json"}
 STATUS_COLOR = {"Conditionally Valid": "orange", "Validated": "green", "Invalid": "red",
                 "Insufficient Information": "violet"}
